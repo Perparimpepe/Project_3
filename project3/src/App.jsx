@@ -4,6 +4,7 @@ import ItemList from "./components/ItemList";
 import AddItemForm from "./components/AddItemForm";
 import { getAllItems, searchItems, addItem, deleteItem, updateItem } from "./services/api";
 
+
 function App() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
