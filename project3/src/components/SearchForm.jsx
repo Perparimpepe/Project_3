@@ -22,4 +22,4 @@ function SearchForm({ onSearch }) {
   );
 }
 
-export default SearchForm;
+export default SearchForm; 
