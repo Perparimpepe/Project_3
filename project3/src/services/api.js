@@ -1,4 +1,4 @@
-const API_URL = "https://project-2-269q.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function getAllItems() {
   const res = await fetch(`${API_URL}/items`);
