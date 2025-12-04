@@ -1,70 +1,33 @@
-import { useEffect, useState } from "react";
-import SearchForm from "./components/SearchForm";
-import ItemList from "./components/ItemList";
-import AddItemForm from "./components/AddItemForm";
-import { getAllItems, searchItems, addItem, deleteItem, updateItem } from "./services/api";
+//This is the main application component that sets up routing and navigation.
 
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import AddItemPage from "./pages/AddItemPage";
 
+// Main App Component
 function App() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getAllItems()
-      .then((data) => {
-        setItems(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
-
-  const handleSearch = (query) => {
-    setLoading(true);
-    searchItems(query)
-      .then((data) => {
-        setItems(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  };
-
-  const handleAdd = (item) => {
-    addItem(item).then(newItem => {
-      setItems(prev => [newItem, ...prev]);
-    });
-  };
-
-  const handleDelete = (id) => {
-    deleteItem(id).then(() => {
-      setItems(prev => prev.filter(i => i._id !== id));
-    });
-  };
-
-  const handleUpdate = (item) => {
-    const updatedMessage = prompt("Edit message:", item.message);
-    if (updatedMessage !== null) {
-      updateItem(item._id, { ...item, message: updatedMessage }).then(updated => {
-        setItems(prev => prev.map(i => i._id === updated._id ? updated : i));
-      });
-    }
-  };
-
   return (
-    <div className="container mt-4">
-      <h1 className="mb-4">Project 3 Frontend</h1>
-      <AddItemForm onAdd={handleAdd} />
-      <SearchForm onSearch={handleSearch} />
-      {loading && <p>Loading...</p>}
-      {error && <p className="text-danger">{error}</p>}
-      <ItemList items={items} onDelete={handleDelete} onUpdate={handleUpdate} />
-    </div>
+    <Router>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            Project 3
+          </Link>
+
+          <div className="navbar-nav">
+            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/add">Add Person</Link>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<AddItemPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

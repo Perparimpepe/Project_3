@@ -1,3 +1,5 @@
+//This component displays an individual item card with options to delete or update the item.
+
 function ItemCard({ item, onDelete, onUpdate }) {
   return (
     <div className="card mb-2">

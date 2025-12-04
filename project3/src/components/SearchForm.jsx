@@ -1,3 +1,5 @@
+//This component provides a search form to filter items/persons based on user input.
+
 import { useState } from "react";
 
 function SearchForm({ onSearch }) {
