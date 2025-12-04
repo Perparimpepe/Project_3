@@ -13,7 +13,7 @@ function AddItemForm({ onAdd }) {
     onAdd({ username, country, message });
     setUsername(""); setCountry(""); setMessage("");
   };
-
+  // RENDER FORM
   return (
     <form onSubmit={handleSubmit} className="mb-3">
       <input

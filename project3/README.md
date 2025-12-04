@@ -1,83 +1,134 @@
-# React + Vite
+## Project 3 — React Frontend for Project 2 API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the final project of the course, where the goal was to build a React-based frontend for the backend created earlier in Project 2.
+The frontend allows users to view, search, add, edit, and delete records stored in a MongoDB database.
+All data is fetched from the already deployed Render backend.
 
-Currently, two official plugins are available:
+## API Connection
+The frontend connects to the Project 2 backend deployed on Render: https://project-2-269q.onrender.com/api
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+All API calls go through this backend, the frontend does not connect directly to MongoDB.
 
-## React Compiler
+## Features
+React + Functional Components + Hooks
+Uses useState, useEffect, reusable components and a clean structure.
+Multi-Page App (React Router)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Includes two routes:
+Home Page — List, search, edit, delete messages
+Add Page — Add new person
 
-Note: This will impact Vite dev & build performances.
+## CRUD Functionality
+The application uses all major API endpoints:
 
-## Expanding the ESLint configuration
+Operation	Method	Endpoint
+Load all items	GET	/api/getall
+Load one item	GET	/api/:id
+Add new item	POST	/api/add
+Update item	PUT	/api/update/:id
+Delete item	DELETE	/api/delete/:id
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Search & Filter
+Search bar filters results by username in real time.
 
-----------------------------------------------------------------
+## Edit Modal (React Bootstrap)
+Modern UI for editing:
+Message
+Country
 
-This is the final project of the course, where the goal was to build a **React-based frontend** for the backend created in **Project 2**.  
-The application displays, filters, adds, edits, and deletes messages stored in a MongoDB database, accessed through the existing Project 2 API.
+## Toast Notifications
+Success notifications for:
+Add
+Edit
+Delete
 
-The frontend connects to the already deployed backend from Project 2: https://project-2-269q.onrender.com
+## Responsive UI (Bootstrap 5 + React-Bootstrap)
+Includes:
+Navigation bar
+Forms
+Cards
+Modals
+Toasts
 
-### ✔ React + Functional Components + Hooks  
-Uses **useState**, **useEffect**, reusable UI components and structured layout.
+## Loading & Error States
 
-### ✔ Multi-Page App (React Router)  
-Two views:
-- **Home Page:** List, search, edit, delete messages  
-- **Add Page:** Add new message  
+Displays:
+Loading indicator
+API error messages
 
-### ✔ CRUD Functionality  
-The frontend performs all main operations:
-- **GET:** Load all person  /api/getall
-- **GET by ID:** Load on person /api/:id
-- **POST:** Add new person  /api/add
-- **PUT:** Edit existing person  /api/update/:id
-- **DELETE:** Remove an person  /api/delete/:id
-
-All requests go through **Project 2 API**, not directly to MongoDB.
-
-### ✔ Search & Filter  
-Search by username using the search bar.
-
-### ✔ Modal-Based Editing (React Bootstrap)  
-Editing an item happens in a modern modal window—not with alerts or prompts.
-
-### ✔ Responsive UI (Bootstrap)  
-Layout adapts to small and large screens.  
-Navigation bar included.
-
-### ✔ Loading & Error States  
-Shows:
-- Loading indicator  
-- Clear error message on failure  
-
-# Project Structure 
+📁 Project Structure
 project3/
 └─ src/
-├─ components/
-│ ├─ ItemCard.jsx
-│ ├─ ItemList.jsx
-│ ├─ SearchForm.jsx
-│ └─ AddItemForm.jsx
-├─ pages/
-│ ├─ Home.jsx
-│ └─ AddItemPage.jsx
-├─ services/
-│ └─ api.js
-├─ App.css
-├─ App.jsx
-├─ main.jsx
-└─ index.css
+   ├─ components/
+   │  ├─ ItemCard.jsx
+   │  ├─ ItemList.jsx
+   │  ├─ SearchForm.jsx
+   │  └─ AddItemForm.jsx
+   ├─ pages/
+   │  ├─ Home.jsx
+   │  └─ AddItemPage.jsx
+   ├─ services/
+   │  └─ api.js
+   ├─ App.jsx
+   ├─ main.jsx
+   └─ index.css
 
-# Homepage 
-Lists all messages
-Search bar (filter by username)
+## Installation & Setup
+1️⃣ Clone the repository
+git clone <your-repository-url>
+cd project3
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Create a .env file in project root
+VITE_API_URL=https://project-2-269q.onrender.com/api
+
+4️⃣ Start the development server
+npm run dev
+
+## Application opens at:
+http://localhost:5173
+
+## Pages Overview
+# Home Page (/)
+Loads and displays all records
+Search by username
 Delete button
-Edit button → opens modal
+Edit modal
+Toast notifications
 Loading & error handling
+
+# Add Page (/add)
+Form to add new person
+Sends POST request
+Success toast after adding
+
+## Styling
+This project uses:
+Bootstrap 5
+React-Bootstrap
+
+UI includes responsive:
+Cards
+Buttons
+Forms
+Modals
+Toast notifications
+Bootstrap is imported in main.jsx:
+import "bootstrap/dist/css/bootstrap.min.css";
+
+## Summary
+This project fulfills all course requirements:
+React functional components
+React Router multi-page navigation
+At least 3 reusable components
+CRUD (GET, POST, PUT, DELETE)
+Search & filtering
+Bootstrap styling
+Modal editing
+Toast notifications
+Loading & error states
+API integration with Project 2 backend
+Render deployment ready
+README documentation
