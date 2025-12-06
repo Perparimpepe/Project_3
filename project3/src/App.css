@@ -40,3 +40,7 @@
 .read-the-docs {
   color: #888;
 }
+.main-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}

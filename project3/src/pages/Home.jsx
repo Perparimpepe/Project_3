@@ -74,7 +74,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="main-container">     
       <h1 className="mb-4 text-center">List of Persons</h1>
         <h2 className="mb-4 text-center">This is only for testing purposes</h2>
       <SearchForm onSearch={handleSearch} />
